@@ -14,12 +14,12 @@ var choices = map[int]string{
 	5:  "00000101",
 	6:  "00000110",
 	7:  "00000111",
-	8:  "00010000",
-	9:  "00010001",
+	8:  "00001000",
+	9:  "00001001",
 	10: "00001010",
 }
 
-var result = map[string]string{
+var lookup = map[string]string{
 	"00000001": "1",
 	"00000010": "2",
 	"00000011": "3",
@@ -33,20 +33,23 @@ var result = map[string]string{
 }
 
 // Question one.
-func Question() {
-	binary := randomSelection()
+func Question() bool {
+	randomInt := randomSelection()
 	var answer string
-	fmt.Printf("Question 1 : What is %s in decimal format?\n", binary)
-	fmt.Print("Answer     : ")
+	fmt.Printf("Question: What is %s in decimal format?\n", choices[randomInt])
+	stringResult := lookup[choices[randomInt]]
+	fmt.Print("Answer  : ")
 	fmt.Scan(&answer)
-	if answer == result[binary] {
+	if answer == stringResult {
 		fmt.Println("Correct! Well done.")
+		return true
 	} else {
 		fmt.Println("Incorrect. Try again.")
+		return false
 	}
 }
 
-func randomSelection() string {
+func randomSelection() int {
 	rand.Seed(time.Now().UnixNano())
-	return choices[rand.Intn(10)]
+	return rand.Intn(10)
 }
