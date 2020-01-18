@@ -3,8 +3,9 @@ package main
 import (
 	"fmt"
 
-	"github.com/james-borwick/quiz/one"
-	"github.com/james-borwick/quiz/two"
+	"github.com/james-borwick/quiz/binary"
+	"github.com/james-borwick/quiz/bits"
+	"github.com/james-borwick/quiz/test"
 )
 
 func main() {
@@ -17,16 +18,19 @@ func main() {
 `)
 	for choice != "q" {
 		fmt.Print(`[1] Binary
-[2] TCP
-[3] IPv4
+[2] Bits
+[3] Time
 [q] Quit
 Choose a category: `)
 		fmt.Scan(&choice)
 		if choice == "1" {
-			result := one.Question()
+			result := binary.Question()
 			correctAnswer = append(correctAnswer, result)
 		} else if choice == "2" {
-			two.Question()
+			result := bits.Question()
+			correctAnswer = append(correctAnswer, result)
+		} else if choice == "3" {
+			test.Question()
 		}
 	}
 	for _, v := range correctAnswer {
