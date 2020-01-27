@@ -1,55 +1,15 @@
 package bits
 
-import (
-	"fmt"
-	"math/rand"
-	"time"
-)
-
-var bitsMap = map[int]string{
-	0: "0",
-	1: "1",
-	2: "2",
-	3: "3",
-	4: "4",
-	5: "5",
-	6: "6",
-	7: "7",
-	8: "8",
-}
-
-var lookup = map[string]string{
-	"0": "0",
-	"1": "2",
-	"2": "4",
-	"3": "8",
-	"4": "16",
-	"5": "32",
-	"6": "64",
-	"7": "128",
-	"8": "256",
-}
-
-var stringResult string
-
-// Question for bits.
-func Question() bool {
-	var answer string
-	randomInt := randomSelection()
-	fmt.Printf("Question: How many values are possible using %v bits?\n", bitsMap[randomInt])
-	fmt.Print("Answer: ")
-	fmt.Scan(&answer)
-	stringResult = lookup[bitsMap[randomInt]]
-	if answer == stringResult {
-		fmt.Println("Correct! Well done.")
-		return true
-	}
-	fmt.Println("Incorrect.")
-	return false
-}
-
-func randomSelection() int {
-	rand.Seed(time.Now().UnixNano())
-	random := rand.Intn(8)
-	return random
+// QuestionsAndAnswers is a map of strings to strings containing questions and
+// answers.
+var QuestionsAndAnswers = map[string]string{
+	"Question: How many values are possible using 0 bits?": "0",
+	"Question: How many values are possible using 1 bits?": "2",
+	"Question: How many values are possible using 2 bits?": "4",
+	"Question: How many values are possible using 3 bits?": "8",
+	"Question: How many values are possible using 4 bits?": "16",
+	"Question: How many values are possible using 5 bits?": "32",
+	"Question: How many values are possible using 6 bits?": "64",
+	"Question: How many values are possible using 7 bits?": "128",
+	"Question: How many values are possible using 8 bits?": "256",
 }
