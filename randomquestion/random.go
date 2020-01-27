@@ -7,8 +7,11 @@ import (
 )
 
 // RandomSelection .
-func RandomSelection(answersMap map[string]string) (randomQuestion string, randomAnswer string) {
+func RandomSelection(qaMaps ...map[string]string) (randomQuestion string, randomAnswer string) {
+	var answersMap map[string]string
 	var questionSlice []string
+
+	
 	
 	for k := range answersMap {
 		questionSlice = append(questionSlice, k)
