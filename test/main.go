@@ -22,5 +22,11 @@ func main() {
 		binaryQA[k] = v
 	}
 
-	fmt.Println(binaryQA)
+	// fmt.Println(binaryQA)
+
+	myFileInfo, _ := ioutil.ReadDir(".")
+	for _, v := range myFileInfo {
+		fmt.Println(v.Name())
+	}
+
 }

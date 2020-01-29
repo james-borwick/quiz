@@ -11,11 +11,11 @@ func RandomSelection(qaMaps ...map[string]string) (randomQuestion string, random
 	var answersMap map[string]string
 	var questionSlice []string
 
-	
-	
 	for k := range answersMap {
 		questionSlice = append(questionSlice, k)
 	}
+
+	fmt.Println("Length of questionSlice as int64:", len(questionSlice))
 
 	rand.Seed(time.Now().UnixNano())
 	randomInt := rand.Int63n(int64(len(questionSlice)))
