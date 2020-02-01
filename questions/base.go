@@ -10,7 +10,7 @@ import (
 )
 
 // Question .
-func Question() bool {
+func Question() (bool, bool) {
 	var userAnswer string
 
 	questionsAndAnswers := getJSONMap()
@@ -22,11 +22,13 @@ func Question() bool {
 
 	if userAnswer == answer {
 		fmt.Println("Correct!")
-		return true
+		return true, false
+	} else if userAnswer == "quit" {
+		return false, true
 	}
 
 	fmt.Println("Incorrect.")
-	return false
+	return false, false
 }
 
 func getJSONMap() map[string]string {
