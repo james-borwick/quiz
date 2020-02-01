@@ -4,29 +4,24 @@ import (
 	"encoding/json"
 	"fmt"
 	"io/ioutil"
+	"strings"
 )
 
-var bitsQA map[string]string
-var bitsData, _ = ioutil.ReadFile("bits.json")
-
 func main() {
-	var bitsQA map[string]string
-	var bitsData, _ = ioutil.ReadFile("bits.json")
-	json.Unmarshal(bitsData, &bitsQA)
-
-	var binaryQA map[string]string
-	var binaryData, _ = ioutil.ReadFile("binary.json")
-	json.Unmarshal(binaryData, &binaryQA)
-
-	for k, v := range bitsQA {
-		binaryQA[k] = v
-	}
-
-	// fmt.Println(binaryQA)
+	var qaMap map[string]string
+	var jsonFiles []string
 
 	myFileInfo, _ := ioutil.ReadDir(".")
+
 	for _, v := range myFileInfo {
-		fmt.Println(v.Name())
+		if strings.Contains(v.Name(), ".json") {
+			jsonFiles = append(jsonFiles, v.Name())
+		}
 	}
+
+	qaMapData, _ = ioutil.ReadFile(jsonFiles[randomInt])
+	json.Unmarshal(bitsData, &qaMap)
+
+	fmt.Println(jsonFiles)
 
 }

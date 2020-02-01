@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"io/ioutil"
 
-	"github.com/james-borwick/quiz/randomquestion"
+	"github.com/james-borwick/quiz/questions"
 )
 
 func main() {
@@ -27,18 +27,12 @@ func main() {
 `)
 
 	for choice != "q" {
-		fmt.Print(`[1] Binary
-[2] Bits
+		fmt.Print(`[1] Question
 [q] Quit
-Choose a category: `)
+Choose an option: `)
 		fmt.Scan(&choice)
-		if choice == "1" {
-			result := randomquestion.Question(binaryQA)
-			correctAnswer = append(correctAnswer, result)
-		} else if choice == "2" {
-			result := randomquestion.Question(bitsQA)
-			correctAnswer = append(correctAnswer, result)
-		}
+		result := questions.Question()
+		correctAnswer = append(correctAnswer, result)
 	}
 
 	for _, v := range correctAnswer {
@@ -46,6 +40,5 @@ Choose a category: `)
 			howManyRight++
 		}
 	}
-	
 	fmt.Printf("Score: %v/%v\n", howManyRight, len(correctAnswer))
 }
