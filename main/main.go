@@ -13,7 +13,8 @@ func main() {
 	fmt.Print(`┏━━━━━━━━━━━━━━┓
 ┃ Network Quiz ┃
 ┗━━━━━━━━━━━━━━┛
-Type 'quit' to quit.`)
+Type 'quit' to quit.
+`)
 
 	for numberOfQuestions := 0; numberOfQuestions < 100; numberOfQuestions++ {
 		result, quit := questions.Question()
